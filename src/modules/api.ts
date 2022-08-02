@@ -1,4 +1,4 @@
-import { ICar } from './types';
+import { ICar } from './typesAndInterface';
 
 const url = 'http://127.0.0.1:3000';
 
@@ -6,10 +6,10 @@ export const garage = `${url}/garage`;
 export const engine = `${url}/engine`;
 export const winners = `${url}/winners`;
 
-const obj: ICar = {
-  name: 'BMW',
-  color: 'RED',
-};
+// const obj: ICar = {
+//   name: 'BMW',
+//   color: 'RED',
+// };
 
 
 export const addCarApi = async (url: string, car: ICar) => {
@@ -21,13 +21,13 @@ export const addCarApi = async (url: string, car: ICar) => {
     body: JSON.stringify(car),
   });
   const data = await result.json();
-  //   console.log(data);
+    // console.log(data);
   return data;
 };
 
 // showText(garage, obj)
 
-const deleteCar = async (url: string, id: number) => {
+export const deleteCar = async (url: string, id: number) => {
   const result = await fetch(`${url}/${id}`, {
     method: 'DELETE',
   });
@@ -66,6 +66,7 @@ export const updateCar = async (url: string, car: ICar, id: number) => {
   });
   const data = await result.json();
   console.log(data);
+  return data
 };
 //   updateCar(garage, obj, 1)
 
