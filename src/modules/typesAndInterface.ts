@@ -9,3 +9,8 @@ export interface IUpdateCar {
   color: string,
   id: string
 }
+
+export interface IPropertyCar {
+  velocity: number,
+  distance: number
+}

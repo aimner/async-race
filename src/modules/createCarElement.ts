@@ -1,4 +1,5 @@
 import { showCars, garage } from './api';
+import { animateStopCar, startCar } from './driveCar';
 import { removeCar } from './removeCar';
 import { svg } from './svg';
 import { IUpdateCar } from './typesAndInterface';
@@ -17,6 +18,8 @@ export function createCarsElement() {
     }
     findSelectCar();
     removeCar();
+    startCar();
+    
   });
 }
 
@@ -28,5 +31,6 @@ export function createCarElement(car: IUpdateCar) {
   garageList.append(elem);
   findSelectCar();
   removeCar();
+  startCar();
 }
 

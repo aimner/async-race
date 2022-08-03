@@ -10,32 +10,32 @@ const updateCarColorInput = document.querySelector('.update-car-color') as HTMLI
 
 export function updateNewCar() {
   updateNewCarButton.addEventListener('click', (event) => {
-    let selectedButtonsArr = Array.from(document.querySelectorAll('.select-button')) as HTMLButtonElement[];
-    let button = selectedButtonsArr.find(item => item.classList.contains('select-button-active')) as HTMLButtonElement
+    const selectedButtonsArr = Array.from(document.querySelectorAll('.select-button')) ;
+    const button = selectedButtonsArr.find(item => item.classList.contains('select-button-active')) as HTMLButtonElement;
     updateCar(garage, {
-          name: updateCarNameInput.value,
-          color: updateCarColorInput.value
-      }, +((button as HTMLButtonElement).id))
-      .then((value) => updateCarColorAndText(button, value))
+      name: updateCarNameInput.value,
+      color: updateCarColorInput.value,
+    }, +((button ).id))
+      .then((value) => updateCarColorAndText(button, value));
   });
 }
 
 
 export function findSelectCar() {
-  let selectedButtonsArr = Array.from(document.querySelectorAll('.select-button')) as HTMLButtonElement[]
+  const selectedButtonsArr = Array.from(document.querySelectorAll('.select-button')); 
   selectedButtonsArr.forEach(item => {
     item.addEventListener('click', (event) => {
       selectedButtonsArr.forEach(elem => {
-        elem.classList.remove('select-button-active')
-      })
-      item.classList.add('select-button-active')
-    })
-  })
+        elem.classList.remove('select-button-active');
+      });
+      item.classList.add('select-button-active');
+    });
+  });
 }
 
 
 function updateCarColorAndText(button: HTMLButtonElement, value: IUpdateCar) {
-         (button.parentElement as HTMLDivElement).innerHTML = svg(value.color, value.name, value.id)
+  (button.parentElement as HTMLDivElement).innerHTML = svg(value.color, value.name, value.id);
 }
 
 

@@ -3,7 +3,9 @@ export function svg(color: string, carBrand: string, carId: string) {
     <span>${carBrand}</span>
     <button id='${carId}' class="select-button">Select</button>
     <button id='${carId}' class="remove-button">Remove</button>
-    <svg class="car" version="1.0" xmlns="http://www.w3.org/2000/svg" width="1280.000000pt" height="640.000000pt"
+    <button id='${carId}' class="start-button">Start</button>
+    <button id='${carId}' class="stop-button">Stop</button>
+    <svg id='${carId}' class="car" version="1.0" xmlns="http://www.w3.org/2000/svg" width="1280.000000pt" height="640.000000pt"
     viewBox="0 0 1280.000000 640.000000" preserveAspectRatio="xMidYMid meet">
     <g transform="translate(0.000000,640.000000) scale(0.100000,-0.100000)" fill=${color} stroke="none">
       <path d="M3565 5336 c-106 -30 -101 -26 -108 -111 -4 -42 -9 -80 -12 -85 -6
@@ -98,6 +100,8 @@ l-15 -73 3006 7 c1653 4 3007 8 3009 9 1 1 -8 37 -20 81 -19 67 -22 105 -22
       <path d="M11033 1803 c-10 -3 -13 -47 -13 -169 0 -90 4 -164 8 -164 36 0 186
 61 239 98 16 10 -216 242 -234 235z" />
     </g>
-  </svg>`;
+  </svg>
+  <div class='road'></div>
+  `;
   return svgFile;
 }
