@@ -101,6 +101,7 @@ l-15 -73 3006 7 c1653 4 3007 8 3009 9 1 1 -8 37 -20 81 -19 67 -22 105 -22
 61 239 98 16 10 -216 242 -234 235z" />
     </g>
   </svg>
+  <img src='./assets/flagpole.svg' class='flagpole'>
   <div class='road'></div>
   `;
   return svgFile;

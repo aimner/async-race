@@ -1,17 +1,75 @@
 @import '../abstracts/mixins';
 
+
+
+
 .car-element {
     display: flex;
-    @include flex(column, center, flex-start)
+    @include flex(column, center, flex-start);
+    position: relative;
 }
 
 .car {
     width: 100px;
     height: 80px;
-    // transition: all 0.1s;
 }
 
 .road {
-    width: 90%;
+    width: 100%;
     border-bottom: 2px dashed black;
 }
+
+.flagpole {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    bottom: 0;
+    left: 85%;
+    @media (max-width:1000px) {
+        left: 80%;
+    }
+    @media (max-width:1000px) {
+        left: 75%;
+    }
+}
+
+@keyframes backwheel {
+    0% {
+      margin-left: 0px;
+    }
+    100% {
+      margin-left: 90%;
+    }
+}
+
+@media (max-width:1000px) {
+    @keyframes backwheel {
+        0% {
+          margin-left: 0px;
+        }
+        100% {
+          margin-left: 87%;
+        }
+      }
+}
+
+@media (max-width:700px) {
+    @keyframes backwheel {
+        0% {
+          margin-left: 0px;
+        }
+        100% {
+          margin-left: 82%;
+        }
+      }
+}
+
+@keyframes stopCar {
+    0% {
+      margin-left: 0px;
+    }
+    100% {
+      margin-left: 0px;
+    }
+  }
+

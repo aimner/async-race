@@ -2,7 +2,7 @@ import { deleteCar, garage } from './api';
 
 export function removeCar() {
   const deleteButtonsArr = Array.from(document.querySelectorAll('.remove-button'));  
-  console.log(deleteButtonsArr);
+  // console.log(deleteButtonsArr);
   deleteButtonsArr.forEach(item => {
     item.addEventListener('click', (event) => {
       deleteCar(garage, +(event.currentTarget as HTMLButtonElement).id);

@@ -1,5 +1,8 @@
 import { animateCar, animateStopCar } from './driveCar';
+import { reset } from './reset';
 import { ICar, IPropertyCar } from './typesAndInterface';
+
+
 
 const url = 'http://127.0.0.1:3000';
 
@@ -39,7 +42,7 @@ export const showCars = async (url: string) => {
     method: 'GET',
   });
   const data = await result.json();
-  console.log(data);
+  // console.log(data);
   return data;
 };
 
@@ -88,10 +91,9 @@ export const stopCarApi = async (url: string, id: number) => {
 
 
 export const driveCarApi = async (url: string, id: number, propertyCar: IPropertyCar) => {
-
-
-  const idInterval = animateCar(propertyCar, id);
-  animateStopCar(controller, idInterval, id)
+  const car = animateCar(propertyCar, id);
+  animateStopCar(controller, id);
+  // reset(idInterval);
   const result = await fetch(`${url}?id=${id}&status=drive`, {
     method: 'PATCH',
     signal: controller.signal
@@ -100,9 +102,9 @@ export const driveCarApi = async (url: string, id: number, propertyCar: IPropert
     console.log('Finish');
   } else {
     console.log('BREAK ENGINE');
-    clearInterval(idInterval);
+    car.style.animationPlayState = 'paused';
+    // car.style.animation = 'none'
+    // car.style.marginLeft = '0'
   }
   const data = await result.json();
-
-  console.log(data);
 };
