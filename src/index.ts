@@ -5,6 +5,8 @@ import { updateNewCar } from './modules/updateCar';
 import { addNewCar } from './modules/addNewCar';
 import { race } from './modules/race';
 import { reset } from './modules/reset';
+import { generate } from './modules/generate';
+import { changePages } from './modules/changePages';
 
 
 
@@ -17,4 +19,6 @@ updateNewCar();
 addNewCar();
 race();
 reset();
+generate();
+changePages();
 

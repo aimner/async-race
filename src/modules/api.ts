@@ -96,7 +96,7 @@ export const driveCarApi = async (url: string, id: number, propertyCar: IPropert
   // reset(idInterval);
   const result = await fetch(`${url}?id=${id}&status=drive`, {
     method: 'PATCH',
-    signal: controller.signal
+    signal: controller.signal,
   });
   if (result.status === 200) {
     console.log('Finish');

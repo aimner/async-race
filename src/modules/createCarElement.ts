@@ -6,7 +6,7 @@ import { IUpdateCar } from './typesAndInterface';
 import { findSelectCar } from './updateCar';
 
 
-const garageList = document.querySelector('.garage-list') as HTMLDivElement;
+export const garageBlock = document.querySelector('.garage') as HTMLDivElement;
 
 export function createCarsElement() {
   showCars(garage).then(value => {
@@ -14,7 +14,15 @@ export function createCarsElement() {
       const elem = document.createElement('div'); 
       elem.innerHTML = svg(key.color, key.name, key.id);
       elem.classList.add('car-element');
-      garageList.append(elem);
+      const cars = document.querySelectorAll('.car');
+      if (cars.length % 7 === 0 && cars.length !== 0) {
+        console.log(cars.length);
+        const garageList = document.createElement('div'); 
+        garageList.setAttribute('id', `page_${cars.length / 7 + 1}`);
+        garageList.classList.add('garage-list-not-active');
+        garageBlock.append(garageList);
+      }
+      (garageBlock.lastElementChild as HTMLDivElement).append(elem);
     }
     findSelectCar();
     removeCar();
@@ -25,10 +33,20 @@ export function createCarsElement() {
 
 
 export function createCarElement(car: IUpdateCar) {
+
   const elem = document.createElement('div'); 
   elem.innerHTML = svg(car.color, car.name, car.id);
   elem.classList.add('car-element');
-  garageList.append(elem);
+  const cars = document.querySelectorAll('.car');
+
+  if (cars.length % 7 === 0) {
+    const garageList = document.createElement('div'); 
+    garageList.setAttribute('id', `page_${cars.length / 7 + 1}`);
+    garageList.classList.add('garage-list-not-active');
+    garageBlock.append(garageList);
+  }
+  
+  (garageBlock.lastElementChild as HTMLDivElement).append(elem);
   findSelectCar();
   removeCar();
   startCar();
