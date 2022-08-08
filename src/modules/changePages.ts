@@ -12,14 +12,21 @@ export function changePages() {
     pageNumber >= garageListArr.length ? null : pageNumber++;
     const garageListItem = Array.from(garageBlock.children).find(item => (item as HTMLDivElement).id === `page_${pageNumber}`) as HTMLDivElement;
     garageListItem.classList.remove('garage-list-not-active');
+    garageListItem.classList.add('garage-list');
+
     garageListItem.previousElementSibling?.classList.add('garage-list-not-active');
+    garageListItem.previousElementSibling?.classList.remove('garage-list');
     pageNumberElement.textContent = `Page#${pageNumber}`;
     console.log(garageListItem);
   });
   prevPageButton.addEventListener('click', (event) => {
+    console.log(pageNumber)
     pageNumber === 1 ? null : pageNumber--;
+    console.log(pageNumber)
     const garageListItem = Array.from(garageBlock.children).find(item => (item as HTMLDivElement).id === `page_${pageNumber}`) as HTMLDivElement;
+    garageListItem.classList.add('garage-list');
     garageListItem.classList.remove('garage-list-not-active');
+    garageListItem.nextElementSibling?.classList.remove('garage-list');
     garageListItem.nextElementSibling?.classList.add('garage-list-not-active');
     pageNumberElement.textContent = `Page#${pageNumber}`;
     console.log(garageListItem);

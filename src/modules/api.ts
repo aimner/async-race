@@ -93,7 +93,6 @@ export const stopCarApi = async (url: string, id: number) => {
 export const driveCarApi = async (url: string, id: number, propertyCar: IPropertyCar) => {
   const car = animateCar(propertyCar, id);
   animateStopCar(controller, id);
-  // reset(idInterval);
   const result = await fetch(`${url}?id=${id}&status=drive`, {
     method: 'PATCH',
     signal: controller.signal,
@@ -103,8 +102,6 @@ export const driveCarApi = async (url: string, id: number, propertyCar: IPropert
   } else {
     console.log('BREAK ENGINE');
     car.style.animationPlayState = 'paused';
-    // car.style.animation = 'none'
-    // car.style.marginLeft = '0'
   }
   const data = await result.json();
 };

@@ -1,6 +1,8 @@
 import { IUpdateCar } from './typesAndInterface';
 import { updateCar, garage } from './api';
 import { svg } from './svg';
+import { removeCar } from './removeCar';
+import { startCar } from './driveCar';
 
 const updateNewCarButton = document.querySelector('.update-car-button') as HTMLButtonElement;
 const updateCarNameInput = document.querySelector('.update-car-name') as HTMLInputElement;
@@ -35,7 +37,10 @@ export function findSelectCar() {
 
 
 function updateCarColorAndText(button: HTMLButtonElement, value: IUpdateCar) {
-  (button.parentElement as HTMLDivElement).innerHTML = svg(value.color, value.name, value.id);
+  ((button.parentElement as HTMLDivElement).parentElement as HTMLDivElement).innerHTML = svg(value.color, value.name, value.id);
+  findSelectCar();
+  removeCar();
+  startCar();
 }
 
 

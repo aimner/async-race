@@ -1,10 +1,13 @@
 export function svg(color: string, carBrand: string, carId: string) {
   const svgFile = `
     <span>${carBrand}</span>
+    <div class="control-block-car">
     <button id='${carId}' class="select-button">Select</button>
     <button id='${carId}' class="remove-button">Remove</button>
     <button id='${carId}' class="start-button">Start</button>
     <button id='${carId}' class="stop-button">Stop</button>
+    </div>
+    <div class="heght"></div>
     <svg id='${carId}' class="car" version="1.0" xmlns="http://www.w3.org/2000/svg" width="1280.000000pt" height="640.000000pt"
     viewBox="0 0 1280.000000 640.000000" preserveAspectRatio="xMidYMid meet">
     <g transform="translate(0.000000,640.000000) scale(0.100000,-0.100000)" fill=${color} stroke="none">

@@ -6,7 +6,7 @@ export function removeCar() {
   deleteButtonsArr.forEach(item => {
     item.addEventListener('click', (event) => {
       deleteCar(garage, +(event.currentTarget as HTMLButtonElement).id);
-      (event.currentTarget as HTMLButtonElement).parentElement!.remove();
+      (event.currentTarget as HTMLButtonElement).parentElement!.parentElement!.remove();
     });
   });
 }

@@ -1,75 +1,51 @@
 @import '../abstracts/mixins';
 
-
-
-
 .car-element {
-    display: flex;
-    @include flex(column, center, flex-start);
-    position: relative;
+  display: flex;
+  @include flex(column, center, flex-start);
+  position: relative;
+  height: 119px;
 }
 
 .car {
-    width: 100px;
-    height: 80px;
+  width: 100px;
+  height: 80px;
+  position: absolute;
+  top: 50px;
 }
 
 .road {
-    width: 100%;
-    border-bottom: 2px dashed black;
+  width: 100%;
+  border-bottom: 2px dashed black;
+}
+
+.heght {
+  height: 100%;
 }
 
 .flagpole {
-    width: 100px;
-    height: 100px;
-    position: absolute;
-    bottom: 0;
-    left: 85%;
-    @media (max-width:1000px) {
-        left: 80%;
-    }
-    @media (max-width:1000px) {
-        left: 75%;
-    }
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  bottom: 0;
+  right: 100px;
 }
 
 @keyframes backwheel {
-    0% {
-      margin-left: 0px;
-    }
-    100% {
-      margin-left: 90%;
-    }
+  0% {
+    right: calc(100% - 100px);
+  }
+  100% {
+    right: 50px;
+  }
 }
 
-@media (max-width:1000px) {
-    @keyframes backwheel {
-        0% {
-          margin-left: 0px;
-        }
-        100% {
-          margin-left: 87%;
-        }
-      }
-}
-
-@media (max-width:700px) {
-    @keyframes backwheel {
-        0% {
-          margin-left: 0px;
-        }
-        100% {
-          margin-left: 82%;
-        }
-      }
-}
 
 @keyframes stopCar {
-    0% {
-      margin-left: 0px;
-    }
-    100% {
-      margin-left: 0px;
-    }
+  0% {
+    right: 50px;
   }
-
+  100% {
+    left: 0px
+  }
+}
