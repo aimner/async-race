@@ -1,4 +1,4 @@
-import { driveCarApi, engine, startCarApi, stopCarApi, controller } from './api';
+import { driveCarApi, engine, startCarApi, stopCarApi } from './api';
 import { IPropertyCar } from './typesAndInterface';
 
 
@@ -16,7 +16,7 @@ export function startCar() {
 
 
 export function animateCar(propertyCar: IPropertyCar, id: number) {
-  const carArr = Array.from(document.querySelectorAll('.car')) as SVGAElement[];
+  const carArr = Array.from(document.querySelectorAll('.car')) ;
   const car = carArr.find(item => +item.id === id) as SVGAElement;
   const time = propertyCar.distance / propertyCar.velocity;
   car.style.animation = `${time}ms backwheel linear forwards`;
@@ -24,7 +24,7 @@ export function animateCar(propertyCar: IPropertyCar, id: number) {
 }
 
 
-export function animateStopCar(cont: AbortController, id: number) {
+export function animateStopCar(id: number) {
   const carArr = Array.from(document.querySelectorAll('.car')) ;
   const car = carArr.find(item => +item.id === id) as SVGAElement;
   const stopButtonsArr = Array.from(document.querySelectorAll('.stop-button')); 

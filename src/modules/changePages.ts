@@ -20,9 +20,9 @@ export function changePages() {
     console.log(garageListItem);
   });
   prevPageButton.addEventListener('click', (event) => {
-    console.log(pageNumber)
+    console.log(pageNumber);
     pageNumber === 1 ? null : pageNumber--;
-    console.log(pageNumber)
+    console.log(pageNumber);
     const garageListItem = Array.from(garageBlock.children).find(item => (item as HTMLDivElement).id === `page_${pageNumber}`) as HTMLDivElement;
     garageListItem.classList.add('garage-list');
     garageListItem.classList.remove('garage-list-not-active');

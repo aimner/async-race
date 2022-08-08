@@ -14,3 +14,14 @@ export interface IPropertyCar {
   velocity: number,
   distance: number
 }
+
+export interface IWinners {
+  id: number,
+  time: number,
+  wins: number
+}
+
+export interface IWinnersNew {
+  time: number,
+  wins: number
+}
