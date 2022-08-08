@@ -1,0 +1,51 @@
+@import '../abstracts/mixins';
+
+.car-element {
+  display: flex;
+  @include flex(column, center, flex-start);
+  position: relative;
+  height: 119px;
+}
+
+.car {
+  width: 100px;
+  height: 80px;
+  position: absolute;
+  top: 50px;
+}
+
+.road {
+  width: 100%;
+  border-bottom: 2px dashed black;
+}
+
+.heght {
+  height: 100%;
+}
+
+.flagpole {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  bottom: 0;
+  right: 100px;
+}
+
+@keyframes backwheel {
+  0% {
+    right: calc(100% - 100px);
+  }
+  100% {
+    right: 50px;
+  }
+}
+
+
+@keyframes stopCar {
+  0% {
+    right: 50px;
+  }
+  100% {
+    left: 0px
+  }
+}

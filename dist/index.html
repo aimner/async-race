@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Async-race</title>
+<script defer src="bundle.js"></script><link href="style/bundle.css" rel="stylesheet"></head>
+<main>
+  <div class="container">
+    <div class="change-block">
+      <button class="garage-button">Garage</button>
+      <button class="winners-button">Winners</button>
+    </div>
+    <section class="garage-block">
+      <div class="control-cars">
+        <button class="add-car-button">Add new car</button>
+        <input class="new-car-name" type="text" placeholder="New car name">
+        <input type="color" class="new-car-color">
+        <button class="update-car-button">Update car</button>
+        <input class="update-car-name" type="text" placeholder="Update car name">
+        <input type="color" class="update-car-color">
+        <button class="race">Race</button>
+        <button class="reset">Reset</button>
+        <button class="generate">Generater cars</button>
+      </div>
+      <div class="garage">
+        <h3 class="title">Garage</h3>
+        <span class="page-number">Page #1</span>
+        <div class="control-pages-block">
+          <button class="prev-page">Prev</button>
+          <button class="next-page">Next</button>
+        </div>
+        <div class="garage-list" id="page_1">
+          <!-- <img src="./assets/car.svg" alt="car" width="300" height="300"> -->
+
+
+        </div>
+      </div>
+    </section>
+    <section class="winners-block">
+
+    </section>
+  </div>
+</main>
+
+<body>
+
+
+</body>
+
+</html>
