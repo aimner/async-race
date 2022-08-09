@@ -25,3 +25,13 @@ export interface IWinnersNew {
   time: number,
   wins: number
 }
+
+export type IUpdateCarAndIWinners = {
+  property: IWinners,
+  car: IUpdateCar
+};
+
+export interface IUpdateWinner {
+  f: Promise<any>,
+  firstWin: boolean
+}

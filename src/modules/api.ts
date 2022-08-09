@@ -1,6 +1,5 @@
 import { animateCar, animateStopCar } from './driveCar';
-import { reset } from './reset';
-import { ICar, IPropertyCar, IWinners, IWinnersNew } from './typesAndInterface';
+import { ICar, IPropertyCar, IWinners, IWinnersNew, IUpdateCar, IUpdateWinner } from './typesAndInterface';
 
 const url = 'http://127.0.0.1:3000';
 
@@ -26,7 +25,6 @@ export const deleteCar = async (url: string, id: number) => {
     method: 'DELETE',
   });
   const data = await result.json();
-  console.log(data);
 };
 
 export const showCars = async (url: string) => {
@@ -34,16 +32,34 @@ export const showCars = async (url: string) => {
     method: 'GET',
   });
   const data = await result.json();
-  // console.log(data);
   return data;
 };
 
-const showCar = async (url: string, id = 1) => {
+export const showCarsWinners = async (url: string, property: IWinners[]) => {
+  const result = await fetch(`${url}`, {
+    method: 'GET',
+  });
+  const car: IUpdateCar[] = await result.json();
+  const carsArr: IUpdateCar[] = [];
+  for (let i = 0; i < property.length; i++) {
+    for (let j = 0; j < car.length; j++) {
+      property[i].id === +car[j].id ? carsArr.push(car[j]) : null;
+    }
+  }
+  // console.log(car)
+  // console.log(property)
+  return { property, carsArr };
+};
+
+export const showCar = async (url: string, property: IUpdateWinner) => {
+  const id = (await property.f.then(value => +value.id)).valueOf();
+  // console.log(id)
   const result = await fetch(`${url}/${id}`, {
     method: 'GET',
   });
-  const data = await result.json();
-  console.log(data);
+  const car = await result.json();
+  console.log(car);
+  return { car, property };
 };
 
 export const updateCar = async (url: string, car: ICar, id: number) => {
@@ -100,15 +116,33 @@ export const getWinner = async (url: string, id: number, time: number) => {
     method: 'GET',
   });
   const data = await result.json();
-  // console.log(data)
+  console.log(data);
+  let firstWin = true;
   if (result.status === 404) {
     console.log('CAR not found');
-    createWinnerFirst(winners, id, time, 1);
+    const obj = {
+      f: createWinnerFirst(winners, id, time, 1),
+      firstWin,
+    };
+    // return createWinnerFirst(winners, id, time, 1)
+    return obj;
   } else {
-    console.log(data);
-    updateWinner(url, time, data);
+    firstWin = false;
+    const obj = {
+      f: updateWinner(url, time, data),
+      firstWin,
+    };
+    // return updateWinner(url, time, data);
+    return obj;
   }
-  // return { id, data };
+};
+
+export const getWinners = async (url: string) => {
+  const result = await fetch(`${url}`, {
+    method: 'GET',
+  });
+  const data = await result.json();
+  return data;
 };
 
 export const createWinnerFirst = async (
@@ -131,7 +165,8 @@ export const createWinnerFirst = async (
     body: JSON.stringify(car),
   });
   const data = await result.json();
-  // console.log(data)
+  console.log(data);
+  return data;
 };
 
 export const updateWinner = async (
@@ -142,13 +177,11 @@ export const updateWinner = async (
   let car: IWinnersNew;
   if (value.time > time) {
     car = {
-      // id: value.id,
       wins: value.wins + 1,
       time,
     };
   } else {
     car = {
-      // id: value.id,
       wins: value.wins + 1,
       time: value.time,
     };
@@ -163,4 +196,14 @@ export const updateWinner = async (
   });
   const data = await result.json();
   console.log('CARS UPDATE');
+  return data;
+};
+
+
+export const deleteWinner = async (url: string, id: number) => {
+  console.log('LOX');
+  const result = await fetch(`${url}/${id}`, {
+    method: 'DELETE',
+  });
+  const data = await result.json();
 };

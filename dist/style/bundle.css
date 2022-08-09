@@ -56,6 +56,13 @@
     left: 0px;
   }
 }
+.garage-block {
+  position: absolute;
+  background-color: white;
+  z-index: 5;
+  min-width: 100vw;
+}
+
 .garage-list {
   position: absolute;
   width: 100%;
@@ -67,6 +74,29 @@
   position: absolute;
   width: 100%;
   background-color: white;
+}
+
+.winners-block {
+  position: relative;
+  min-height: 100vh;
+  background-color: white;
+}
+
+.winners-block-active {
+  z-index: 10;
+}
+
+table {
+  border-collapse: collapse;
+}
+table th, table td {
+  border: 1px solid black;
+  padding: 5px;
+}
+
+body {
+  min-width: 100vw;
+  min-height: 100vh;
 }
 
 .select-button {
