@@ -1,6 +1,6 @@
 import { IUpdateCar } from './typesAndInterface';
 import { updateCar, garage } from './api';
-import { svg } from './svg';
+import { svg } from './createHtmlElements';
 import { removeCar } from './removeCar';
 import { startCar } from './driveCar';
 

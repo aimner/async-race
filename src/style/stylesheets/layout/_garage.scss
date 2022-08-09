@@ -1,3 +1,11 @@
+.garage-block {
+    position: absolute;
+    background-color: white;
+    z-index: 5;
+    min-width: 100vw;
+}
+
+
 .garage-list {
     position: absolute;
     width: 100%;
@@ -10,3 +18,4 @@
     width: 100%;
     background-color: white;
 }
+

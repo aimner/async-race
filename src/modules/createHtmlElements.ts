@@ -1,3 +1,8 @@
+import { renderTableElement } from './changePages';
+import { IUpdateCar, IUpdateCarAndIWinners, IWinners } from './typesAndInterface';
+
+const tableWinners = document.querySelector('.winners-table') as HTMLTableElement;
+
 export function svg(color: string, carBrand: string, carId: string) {
   const svgFile = `
     <span>${carBrand}</span>
@@ -108,4 +113,37 @@ l-15 -73 3006 7 c1653 4 3007 8 3009 9 1 1 -8 37 -20 81 -19 67 -22 105 -22
   <div class='road'></div>
   `;
   return svgFile;
+}
+
+
+
+export function createTableElement(car:IUpdateCar, property: IWinners) {
+  const tableElement = ` 
+      <td>${document.querySelector('tbody')?.children.length}</td>
+      <td>${car.color}</td>
+      <td>${car.name}</td>
+      <td>${property.wins}</td>
+      <td>${property.time}</td>
+      `;
+  return tableElement;
+}
+
+
+export function createTableRow(car:IUpdateCar, property: IWinners) {
+  const tableRow  = document.createElement('tr');
+  tableRow.classList.add('car-property');
+  tableRow.innerHTML = createTableElement(car, property);
+  tableRow.setAttribute('id', `${property.id}`);
+  tableWinners.append(tableRow);
+  // renderTableElement()
+   
+}
+export function changeTableRow(car:IUpdateCar, property: IWinners) {
+  const tableRowArr = Array.from(document.querySelectorAll('.car-property')) ;
+  const tableRow  = tableRowArr.find(item => +item.id === property.id)!;
+  tableRow.innerHTML = createTableElement(car, property);
+  tableRow.setAttribute('id', `${property.id}`);
+  tableWinners.append(tableRow);
+
+   
 }
