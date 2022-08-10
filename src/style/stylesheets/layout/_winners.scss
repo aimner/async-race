@@ -2,7 +2,7 @@
     position: relative;
     // min-width: 100vw;
     min-height: 100vh;
-
+    // z-index: 10;
     background-color: white;
 }
 
@@ -12,11 +12,34 @@
 
 table {
     border-collapse: collapse;
+    margin: 10px 0;
+    width: 330px;
 
-    th, td {
+    td {
         border: 1px solid black;
         padding: 5px;
+        background-color: rgb(250, 252, 253);
+        text-align: center;
+    }
+    th {
+        padding: 5px;
+        border: 1px solid rgb(66, 106, 107);
+
+        background-color: rgb(66, 106, 107);
+        color: rgb(201, 194, 194);
     }
 
 
+}
+
+.info-winners-block {
+    border-radius: 5px;
+    border: 2px solid gray;
+    padding: 20px;
+    width: 330px;
+    margin-top: 20px;
+    &  * {
+        margin-bottom: 3px;
+        margin-top: 3px;
+    }
 }

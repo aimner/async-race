@@ -1,14 +1,9 @@
-body {
-    min-width: 100vw;
-    min-height: 100vh;
+.container {
+    padding: 0 20px;
+    max-width: 100vw;
+
 }
+.change-block {
+    padding-top: 10px;
 
-// .main {
-//     min-width: 100%;
-//     min-height: 100%;
-// }
-
-// .container, .main  {
-//     min-width: 100vw;
-//     min-height: 100vh;
-// }
+}

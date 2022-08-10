@@ -4,14 +4,17 @@
   display: flex;
   @include flex(column, center, flex-start);
   position: relative;
-  height: 119px;
+  height: 150px;
+  & > span {
+    margin: 5px 0;
+  }
 }
 
 .car {
   width: 100px;
   height: 80px;
   position: absolute;
-  top: 50px;
+  top: 80px;
 }
 
 .road {

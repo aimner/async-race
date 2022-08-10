@@ -1,0 +1,40 @@
+@import '../abstracts/mixins';
+
+$block-height: 75px;
+
+
+.control-cars {
+ display: flex;
+ gap: 20px;
+ padding: 20px;
+ @include flex(row, flex-start, center);
+ margin: 20px 0 20px 0;
+ width: 500px;
+ border-radius: 5px;
+ 
+ border: 2px solid gray;
+ .add-new-car-block {
+    height: $block-height;
+    display: flex;
+    gap: 5px;
+    @include flex(column, center, center);
+
+ }
+ .update-car-block {
+    height: $block-height;
+    display: flex;
+    gap: 5px;
+    @include flex(column, center, center);
+
+ }
+ .race-reset-generate-block {
+    height: $block-height;
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    @include flex(column, center, flex-end);
+
+ }
+
+
+}

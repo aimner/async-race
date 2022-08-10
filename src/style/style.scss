@@ -2,12 +2,14 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Nanum Gothic', sans-serif;
 }
 
 
 @import 'stylesheets/layout/carElement';
 @import 'stylesheets/layout/garage';
 @import 'stylesheets/layout/winners';
+@import 'stylesheets/layout/controlCarsBlock';
 @import 'stylesheets/layout/main';
 
 @import 'stylesheets/components/buttons';
