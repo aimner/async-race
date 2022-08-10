@@ -61,7 +61,7 @@ export const showCar = async (url: string, property: IUpdateWinner) => {
   const result = await fetch(`${url}/${id}`, {
     method: 'GET',
   });
-  const car = await result.json();
+  const car: IUpdateCar = await result.json();
   return { car, property };
 };
 

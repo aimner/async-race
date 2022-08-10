@@ -775,6 +775,9 @@ const api_1 = __webpack_require__(/*! ./api */ "./modules/api.ts");
 const createHtmlElements_1 = __webpack_require__(/*! ./createHtmlElements */ "./modules/createHtmlElements.ts");
 const reset_1 = __webpack_require__(/*! ./reset */ "./modules/reset.ts");
 const changePages_1 = __webpack_require__(/*! ./changePages */ "./modules/changePages.ts");
+const popap = document.querySelector('.popap');
+const popapCarName = document.querySelector('.popap-car-name');
+const popapCarTime = document.querySelector('.popap-car-time');
 exports.raceButton = document.querySelector('.race');
 async function race() {
     exports.raceButton.addEventListener('click', (event) => {
@@ -822,6 +825,12 @@ async function race() {
                 else {
                     (0, createHtmlElements_1.changeTableRow)(value.car, (await value.property.f.then(value => value)).valueOf());
                 }
+                return value;
+            }).then(async (value) => {
+                popap.classList.add('popap-active');
+                popapCarName.textContent = `${value.car.name} Win!`;
+                popapCarTime.textContent = `${String((await value.property.f.then(value => value).valueOf()).time)} s.`;
+                setTimeout(() => popap.classList.remove('popap-active'), 3000);
             })
                 .then(() => reset_1.resetButton.classList.remove('reset-not-active'));
         }
