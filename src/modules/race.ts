@@ -1,10 +1,12 @@
-import { IPropertyCar } from './typesAndInterface';
+import { IPropertyCar, IWinners } from './typesAndInterface';
 import { driveCarApi, startCarApi, engine, getWinner, winners, showCar, garage } from './api';
 import { createTableRow, changeTableRow } from './createHtmlElements';
 import { resetButton } from './reset';
 import { nextPageButton, prevPageButton } from './changePages';
 
-
+const popap = document.querySelector('.popap') as HTMLDivElement;
+const popapCarName = document.querySelector('.popap-car-name') as HTMLDivElement;
+const popapCarTime = document.querySelector('.popap-car-time') as HTMLDivElement;
 
 
 export const raceButton = document.querySelector('.race') as HTMLButtonElement;
@@ -60,6 +62,12 @@ export async function race() {
           } else {
             changeTableRow(value.car, (await value.property.f.then(value => value)).valueOf());
           }
+          return value;
+        }).then( async value => {
+          popap.classList.add('popap-active');
+          popapCarName.textContent = `${value.car.name} Win!`;
+          popapCarTime.textContent = `${String(((await value.property.f.then(value => value).valueOf()) as IWinners).time)} s.`;
+          setTimeout(() => popap.classList.remove('popap-active'), 3000);
         })
         .then(() => resetButton.classList.remove('reset-not-active'));
     }
