@@ -1,5 +1,12 @@
 import { animateCar, animateStopCar } from './driveCar';
-import { ICar, IPropertyCar, IWinners, IWinnersNew, IUpdateCar, IUpdateWinner } from './typesAndInterface';
+import {
+  ICar,
+  IPropertyCar,
+  IWinners,
+  IWinnersNew,
+  IUpdateCar,
+  IUpdateWinner,
+} from './typesAndInterface';
 
 const url = 'http://127.0.0.1:3000';
 
@@ -46,19 +53,15 @@ export const showCarsWinners = async (url: string, property: IWinners[]) => {
       property[i].id === +car[j].id ? carsArr.push(car[j]) : null;
     }
   }
-  // console.log(car)
-  // console.log(property)
   return { property, carsArr };
 };
 
 export const showCar = async (url: string, property: IUpdateWinner) => {
-  const id = (await property.f.then(value => +value.id)).valueOf();
-  // console.log(id)
+  const id = (await property.f.then((value) => +value.id)).valueOf();
   const result = await fetch(`${url}/${id}`, {
     method: 'GET',
   });
   const car = await result.json();
-  console.log(car);
   return { car, property };
 };
 
@@ -71,7 +74,6 @@ export const updateCar = async (url: string, car: ICar, id: number) => {
     body: JSON.stringify(car),
   });
   const data = await result.json();
-  console.log(data);
   return data;
 };
 
@@ -80,7 +82,6 @@ export const startCarApi = async (url: string, id: number) => {
     method: 'PATCH',
   });
   const data = await result.json();
-  console.log(data);
   return { id, data };
 };
 
@@ -89,7 +90,6 @@ export const stopCarApi = async (url: string, id: number) => {
     method: 'PATCH',
   });
   const data = await result.json();
-
   return { id, data };
 };
 
@@ -104,7 +104,6 @@ export const driveCarApi = async (
     method: 'PATCH',
   });
   if (result.status !== 200) {
-    console.log('BREAK ENGINE');
     car.style.animationPlayState = 'paused';
   }
   const data = await result.json();
@@ -112,19 +111,19 @@ export const driveCarApi = async (
 };
 
 export const getWinner = async (url: string, id: number, time: number) => {
+
   const result = await fetch(`${url}/${id}`, {
     method: 'GET',
   });
+
   const data = await result.json();
-  console.log(data);
+
   let firstWin = true;
   if (result.status === 404) {
-    console.log('CAR not found');
     const obj = {
       f: createWinnerFirst(winners, id, time, 1),
       firstWin,
     };
-    // return createWinnerFirst(winners, id, time, 1)
     return obj;
   } else {
     firstWin = false;
@@ -132,7 +131,6 @@ export const getWinner = async (url: string, id: number, time: number) => {
       f: updateWinner(url, time, data),
       firstWin,
     };
-    // return updateWinner(url, time, data);
     return obj;
   }
 };
@@ -165,7 +163,6 @@ export const createWinnerFirst = async (
     body: JSON.stringify(car),
   });
   const data = await result.json();
-  console.log(data);
   return data;
 };
 
@@ -195,15 +192,11 @@ export const updateWinner = async (
     body: JSON.stringify(car),
   });
   const data = await result.json();
-  console.log('CARS UPDATE');
   return data;
 };
 
-
 export const deleteWinner = async (url: string, id: number) => {
-  console.log('LOX');
   const result = await fetch(`${url}/${id}`, {
     method: 'DELETE',
   });
-  const data = await result.json();
 };

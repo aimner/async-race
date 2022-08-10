@@ -4,7 +4,8 @@ import { removeCar } from './removeCar';
 import { svg } from './createHtmlElements';
 import { IUpdateCar } from './typesAndInterface';
 import { findSelectCar } from './updateCar';
-import { renderTableElement } from './changePages';
+import { renderTableElement, winnersPageNumber } from './changePages';
+
 
 
 export const garageBlock = document.querySelector('.garage') as HTMLDivElement;
@@ -17,7 +18,6 @@ export function createCarsElement() {
       elem.classList.add('car-element');
       const cars = document.querySelectorAll('.car');
       if (cars.length % 7 === 0 && cars.length !== 0) {
-        // console.log(cars.length);
         const garageList = document.createElement('div'); 
         garageList.setAttribute('id', `page_${cars.length / 7 + 1}`);
         garageList.classList.add('garage-list-not-active');

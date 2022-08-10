@@ -1,6 +1,45 @@
+button {
+    border: none;
+    width: 100px;
+    background-color: rgb(196, 203, 207);
+
+    &:hover {
+        background-color: rgb(149, 156, 161);
+    }
+
+    height: 22px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+
 .select-button {
     width: 100px;
 }
-.select-button-active {
-    background-color: burlywood;
+
+
+.stop-button-not-active,
+.start-button-not-active,
+.next-page-button-not-active,
+.prev-page-button-not-active,
+.select-button-active,
+.race-not-active,
+.reset-not-active, 
+.select-not-active, 
+.remove-not-active,
+.winner-active,
+.garage-active,
+.prev-page-button-winners-not-active, 
+.next-page-button-winners-not-active {
+    background-color: rgb(66, 106, 107);
+    color: rgb(201, 194, 194);
+
+    &:hover {
+
+
+        background-color: rgb(66, 106, 107);
+        color: rgb(201, 194, 194);
+        cursor: auto;
+    }
 }
